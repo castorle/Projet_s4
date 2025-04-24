@@ -133,6 +133,12 @@ table th {
     gap: 1em;
 }
 
+.maintenance-log-item{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
 li {
     padding: 1em;
 }
