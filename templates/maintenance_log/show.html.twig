@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaintenanceLog{% endblock %}
+
+{% block body %}
+    <h1>{{ 'maintenance_log'|trans }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ maintenance_log.id }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'date'|trans }}</th>
+                <td>{{ maintenance_log.date ? maintenance_log.date|format_date('full') : '' }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'description'|trans }}</th>
+                <td>{{ maintenance_log.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_maintenance_log_index') }}">{{ 'back_to_list'|trans }}</a>
+
+    <a href="{{ path('app_maintenance_log_edit', {'id': maintenance_log.id}) }}">{{ 'edit'|trans }}</a>
+
+    {{ include('maintenance_log/_delete_form.html.twig') }}
+{% endblock %}

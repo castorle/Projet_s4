@@ -1,0 +1,147 @@
+/* styles.css */
+
+/* Réinitialisation de base */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Corps de la page */
+body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #fefae0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* En-tête */
+header {
+    background-color: #9BA685;
+    color: #333333;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header h1 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 1000;
+    font-style: normal;
+    font-size: 4em;
+    margin-bottom: 0.5em;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+header nav ul li a {
+    color: #333333;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #d4f1d4;
+}
+
+/* Contenu principal */
+main {
+    margin: 0 auto auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 1200px;
+    border-radius: 5px;
+}
+
+/* Boutons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    text-align: left;
+}
+
+table tr {
+    height: 5em;
+    overflow: hidden;
+}
+
+img {
+    width: auto;
+    height: 15em;
+    border-radius: 5px;
+}
+
+table th {
+    background-color: #f4f4f4;
+}
+
+.right {
+    right: 0;
+    position: absolute;
+}
+
+.list-item {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    margin: 0.5em 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.5);
+}
+
+.plant-guide-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+}
+
+li {
+    padding: 1em;
+}
+
+/* Pied de page */
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #333;
+    color: white;
+    margin-top: 2em;
+}

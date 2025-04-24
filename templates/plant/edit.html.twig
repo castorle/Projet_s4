@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Plant{% endblock %}
+
+{% block body %}
+    <h1>{{ 'edit_plant'|trans }}</h1>
+
+    {{ include('plant/_form.html.twig', {'button_label': 'update'|trans}) }}
+
+    <a href="{{ path('app_plant_index') }}">{{ 'back_to_list'|trans }}</a>
+
+    {{ include('plant/_delete_form.html.twig') }}
+{% endblock %}

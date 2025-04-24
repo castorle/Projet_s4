@@ -2,15 +2,48 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Welcome!{% endblock %} - Jardin Enchanté</title>
+
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap');
+        </style>
         {% block stylesheets %}
         {% endblock %}
 
         {% block javascripts %}
         {% endblock %}
+
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <header>
+        <h1>Jardin Enchanté</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_default') }}">{{ 'home'|trans }}</a></li>
+                <li><a href="{{ path('app_plants') }}">{{ 'plants'|trans }}</a></li>
+                {% if app.user %}
+                <li><a href="{{ path('app_maintenance_logs') }}">{{ 'journal'|trans }}</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('app_user_index') }}">{{ 'crud_user'|trans }}</a></li>
+                        <li><a href="{{ path('app_plant_index') }}">{{ 'crud_plant'|trans }}</a></li>
+                        <li><a href="{{ path('app_category_index') }}">{{ 'crud_category'|trans }}</a></li>
+                        <li><a href="{{ path('app_maintenance_log_index') }}">{{ 'crud_maintenance_log'|trans }}</a></li>
+                {% endif %}
+                {% if app.user %}
+                    <li class="right"><a href="{{ path('user_logout') }}">Déconnexion</a></li>
+                {% else %}
+                    <li class="right"><a href="{{ path('app_login') }}">Connexion</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block body %}
+
+        {% endblock %}
+    </main>
     </body>
 </html>

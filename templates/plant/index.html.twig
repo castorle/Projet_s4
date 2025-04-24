@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plant index{% endblock %}
+
+{% block body %}
+    <h1>{{ 'plants_index'|trans }}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{ 'category'|trans }}</th>
+                <th>{{ 'common_name'|trans }}</th>
+                <th>{{ 'scientific_name'|trans }}</th>
+                <th>{{ 'description'|trans }}</th>
+                <th>{{ 'image'|trans }}</th>
+                <th>{{ 'cycle'|trans }}</th>
+                <th>{{ 'hardiness_zone'|trans }}</th>
+                <th>{{ 'maintenance_difficulty'|trans }}</th>
+                <th>{{ 'watering_needs'|trans }}</th>
+                <th>{{ 'soil_type'|trans }}</th>
+                <th>{{ 'flowering_season'|trans }}</th>
+                <th>{{ 'created_at'|trans }}</th>
+                <th>{{ 'actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plant in plants %}
+            <tr>
+                <td>{{ plant.id }}</td>
+                <td>{{ plant.category ? plant.category.nom : '' }}</td>
+                <td>{{ plant.commonName }}</td>
+                <td>{{ plant.scientificName }}</td>
+                <td>{{ plant.description }}</td>
+                <td><img src="{{ asset('assets/img/uploads/plants/' ~ plant.image) }}" alt="{{ plant.commonName }}" /></td>
+                <td>{{ plant.cycle }}</td>
+                <td>{{ plant.hardinessZone }}</td>
+                <td>{{ plant.maintenanceDifficulty }}</td>
+                <td>{{ plant.wateringNeeds }}</td>
+                <td>{{ plant.soilType }}</td>
+                <td>{{ plant.floweringSeason }}</td>
+                <td>{{ plant.createdAt ? plant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_plant_show', {'id': plant.id}) }}">{{ 'show'|trans }}</a>
+                    <a href="{{ path('app_plant_edit', {'id': plant.id}) }}">{{ 'edit'|trans }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">{{ 'no_record_found'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_plant_new') }}">{{ 'create_new_plant'|trans }}</a>
+{% endblock %}

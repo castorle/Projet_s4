@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Journaux de maintenance{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>{{ 'plants_maintenance_logs'|trans }}</h1>
+    {% for log in maintenance_logs %}
+        <section class="list-item">
+            <h2>{{ log.plant.commonName }}</h2>
+            <h3>{{ log.plant.scientificName }}</h3>
+            
+            <div class="maintenance-details">
+                <ul class="maintenance-details-list">
+                    <li>{{ 'date'|trans }}: {{ log.date|format_date('full')}}</li>
+                    <li>{{ 'description'|trans }}: {{ log.description }}</li>
+                </ul>
+                <img src="{{ asset('assets/img/uploads/plants/' ~ log.plant.image) }}" alt="{{ log.plant.scientificName }}" style="max-width: 200px; max-height: 200px;">
+            </div>
+        </section>
+    {% else %}
+        <p>{{ 'no_records_found'|trans }}</p>
+    {% endfor %}
+
+    {% if is_granted('ROLE_USER') %}
+        <div class="actions">
+            <a href="{{ path('app_maintenance_log_new') }}" class="btn">{{ 'create_new_maintenance_log'|trans }}</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

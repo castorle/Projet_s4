@@ -9,9 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
+    {% if app.user %}
+        <h1>Bonjour {{ app.user.username }}!</h1>
+    {% else %}
+        <h1>Bonjour!</h1>
+    {% endif %}
+    <p>Nous sommes le {{ "now"|format_date('full') }}</p>
     <ul>
         <li>Your controller at <code>C:/Users/ewan8/Documents/cours/L2/prog web/S4/projet/Projet_s4/src/Controller/DefaultController.php</code></li>
         <li>Your template at <code>C:/Users/ewan8/Documents/cours/L2/prog web/S4/projet/Projet_s4/templates/default/index.html.twig</code></li>

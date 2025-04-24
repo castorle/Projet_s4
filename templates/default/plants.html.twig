@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>{{ 'plants_index'|trans }}</h1>
+    {% for plant in plants %}
+        <section class="list-item">
+        <h2>{{ plant.commonName }}</h2>
+        <h3>{{ plant.scientificName }}</h3>
+        <p>{{ plant.description }}</p>
+        <img src="{{ asset('assets/img/uploads/plants/' ~ plant.image) }}" alt="{{ plant.scientificName }}" style="max-width: 200px; max-height: 200px;">
+            <div class="plant-guide">
+                <h3>Guide:</h3>
+                <ul class="plant-guide-list">
+                    <li>{{ 'cycle'|trans }}: {{ plant.cycle }}</li>
+                    <li>{{ 'hardiness_zone'|trans }}: {{ plant.hardinessZone }}</li>
+                    <li>{{ 'maintenance_difficulty'|trans}}: {{ plant.maintenanceDifficulty }}</li>
+                    <li>{{ 'watering_needs'|trans }}: {{ plant.wateringNeeds }}</li>
+                    <li>{{ 'soil_type'|trans }}: {{ plant.soilType }}</li>
+                    <li>{{ 'flowering_season'|trans }}: {{ plant.floweringSeason }}</li>
+                </ul>
+            </div>
+        </section>
+    {% else %}
+        <p>{{ 'no_plants_found'|trans }}</p>
+    {% endfor %}
+</div>
+{% endblock %}

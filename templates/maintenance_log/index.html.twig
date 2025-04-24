@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MaintenanceLog index{% endblock %}
+
+{% block body %}
+    <h1>{{ 'maintenance_log_index'|trans }}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{ 'date'|trans }}</th>
+                <th>{{ 'user'|trans }}</th>
+                <th>{{ 'description'|trans }}</th>
+                <th>{{ 'actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maintenance_log in maintenance_logs %}
+            <tr>
+                <td>{{ maintenance_log.id }}</td>
+                <td>{{ maintenance_log.date ? maintenance_log.date|format_date('full') : '' }}</td>
+                <td>{{ maintenance_log.user }}</td>
+                <td>{{ maintenance_log.description }}</td>
+                <td>
+                    <a href="{{ path('app_maintenance_log_show', {'id': maintenance_log.id}) }}">{{ 'show'|trans }}</a>
+                    <a href="{{ path('app_maintenance_log_edit', {'id': maintenance_log.id}) }}">{{ 'edit'|trans }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">{{ 'no_records_fond'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_maintenance_log_new') }}">{{ 'create_new_maintenance_log'|trans }}</a>
+{% endblock %}
