@@ -33,9 +33,9 @@
                         <li><a href="{{ path('app_maintenance_log_index') }}">{{ 'crud_maintenance_log'|trans }}</a></li>
                 {% endif %}
                 {% if app.user %}
-                    <li class="right"><a href="{{ path('user_logout') }}">Déconnexion</a></li>
+                    <li class="right"><a href="{{ path('user_logout') }}">{{ 'logout'|trans }}</a></li>
                 {% else %}
-                    <li class="right"><a href="{{ path('app_login') }}">Connexion</a></li>
+                    <li class="right"><a href="{{ path('app_login') }}">{{ 'login'|trans }}</a></li>
                 {% endif %}
             </ul>
         </nav>
