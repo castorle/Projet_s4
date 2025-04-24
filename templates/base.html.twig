@@ -45,5 +45,15 @@
 
         {% endblock %}
     </main>
+    <footer>
+        <p>{{ 'university_year'|trans }}</p>
+        <form method="get" action="">
+            <select name="_locale" onchange="this.form.submit()">
+                {% for locale, language in {'fr': 'FR', 'en': 'EN', 'es': 'ES', 'de': 'DE', 'it': 'IT'} %}
+                    <option value="{{ locale }}" {% if app.request.getLocale() == locale %}selected{% endif %}>{{ language }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </footer>
     </body>
 </html>

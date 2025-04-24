@@ -110,10 +110,10 @@ Une application web développée avec Symfony pour la gestion de plantes et leur
 - `description` (text)
 - `plants` (relation)
 
-## 👥 Auteur
+## Auteur
 
 Ewan Leclercq
 
-## 🎓 Contexte
+## Contexte
 
 Projet réalisé dans le cadre de l'année universitaire 2024-2025 - L2
