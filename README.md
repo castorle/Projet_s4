@@ -1,10 +1,10 @@
 # PROJET PLANTES 🌱
 
-## 🗒️ Description
+## Description
 
-Une application web développée avec Symfony pour la gestion de plantes et leur entretien. Cette application permet aux utilisateurs de gérer leur collection de plantes, de suivre leur entretien et de maintenir un journal de maintenance détaillé.
+Une application web développée avec Symfony pour la gestion de plantes et leur entretien. Cette application permet aux utilisateurs de gérer leur collection de plantes, de suivre leur entretien et de se renseigner sur les plantes.
 
-## 🎯 Objectifs
+## Objectifs
 
 * Gestion des utilisateurs (authentification, profils)
 * Gestion complète des plantes (CRUD)
@@ -33,7 +33,7 @@ Une application web développée avec Symfony pour la gestion de plantes et leur
 * MySQL/MariaDB
 * Node.js et npm (pour les assets)
 
-## 💾 Installation
+## Installation
 
 1. Cloner le dépôt :
 ```
@@ -62,13 +62,13 @@ Une application web développée avec Symfony pour la gestion de plantes et leur
    symfony local:server:start
 ```
 
-## 🌐 Utilisation
+## Utilisation
 
 1. Accédez à l'application via : http://localhost:8000
 2. Créez un compte utilisateur
 3. Renseignez vous sur vos plantes et suivez leur entretien
 
-## 🔧 Structure du Projet
+## Structure du Projet
 
 - config/         - Configuration Symfony
 - migrations/     - Migrations de base de données
