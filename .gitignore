@@ -54,3 +54,4 @@
 .env.local
 
 /.idea
+/.vscode
