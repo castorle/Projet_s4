@@ -14,17 +14,17 @@
         <section class="list-item">
         <h2>{{ plant.commonName }}</h2>
         <h3>{{ plant.scientificName }}</h3>
-        <p>{{ plant.description }}</p>
+        <p>{{ plant.description|trans }}</p>
         <img src="{{ asset('assets/img/uploads/plants/' ~ plant.image) }}" alt="{{ plant.scientificName }}" style="max-width: 200px; max-height: 200px;">
             <div class="plant-guide">
                 <h3>Guide:</h3>
                 <ul class="plant-guide-list">
-                    <li>{{ 'cycle'|trans }}: {{ plant.cycle }}</li>
-                    <li>{{ 'hardiness_zone'|trans }}: {{ plant.hardinessZone }}</li>
-                    <li>{{ 'maintenance_difficulty'|trans}}: {{ plant.maintenanceDifficulty }}</li>
-                    <li>{{ 'watering_needs'|trans }}: {{ plant.wateringNeeds }}</li>
-                    <li>{{ 'soil_type'|trans }}: {{ plant.soilType }}</li>
-                    <li>{{ 'flowering_season'|trans }}: {{ plant.floweringSeason }}</li>
+                    <li>{{ 'cycle'|trans }}: {{ plant.cycle|trans  }}</li>
+                    <li>{{ 'hardiness_zone'|trans }}: {{ plant.hardinessZone|trans }}</li>
+                    <li>{{ 'maintenance_difficulty'|trans}}: {{ plant.maintenanceDifficulty|trans }}</li>
+                    <li>{{ 'watering_needs'|trans }}: {{ plant.wateringNeeds|trans }}</li>
+                    <li>{{ 'soil_type'|trans }}: {{ plant.soilType|trans }}</li>
+                    <li>{{ 'flowering_season'|trans }}: {{ plant.floweringSeason|trans }}</li>
                 </ul>
             </div>
         </section>
