@@ -10,24 +10,53 @@
 
 <div class="example-wrapper">
     <h1>{{ 'plants_index'|trans }}</h1>
+    <aside>
+        <form method="get" action="" class="mb-4">
+            <label>Catégorie :
+                <select name="category">
+                    <option value="">Toutes</option>
+                    <option value="Plante verte" {% if app.request.get('category') == 'Plante verte' %}selected{% endif %}>Plante verte</option>
+                    <option value="Cactus" {% if app.request.get('category') == 'Cactus' %}selected{% endif %}>Cactus</option>
+                    <option value="Fleur" {% if app.request.get('category') == 'Fleur' %}selected{% endif %}>Fleur</option>
+                </select>
+            </label>
+            <label>Difficulté d'entretien :
+                <select name="maintenanceDifficulty">
+                    <option value="">Toutes</option>
+                    <option value="easy" {% if app.request.get('maintenanceDifficulty') == 'easy' %}selected{% endif %}>Facile</option>
+                    <option value="medium" {% if app.request.get('maintenanceDifficulty') == 'medium' %}selected{% endif %}>Moyenne</option>
+                    <option value="difficult" {% if app.request.get('maintenanceDifficulty') == 'difficult' %}selected{% endif %}>Difficile</option>
+                </select>
+            </label>
+            <label>Type de sol :
+                <select name="soilType">
+                    <option value="">Tous</option>
+                    <option value="Sableux" {% if app.request.get('soilType') == 'Sableux' %}selected{% endif %}>Sableux</option>
+                    <option value="Argileux" {% if app.request.get('soilType') == 'Argileux' %}selected{% endif %}>Argileux</option>
+                    <option value="Humifère" {% if app.request.get('soilType') == 'Humifère' %}selected{% endif %}>Humifère</option>
+                    <option value="Calcaire" {% if app.request.get('soilType') == 'Calcaire' %}selected{% endif %}>Calcaire</option>
+                </select>
+            </label>
+            <label>Besoins en eau :
+                <select name="wateringNeeds">
+                    <option value="">Tous</option>
+                    <option value="low" {% if app.request.get('wateringNeeds') == 'low' %}selected{% endif %}>Faibles</option>
+                    <option value="average" {% if app.request.get('wateringNeeds') == 'average' %}selected{% endif %}>Moyens</option>
+                    <option value="high" {% if app.request.get('wateringNeeds') == 'high' %}selected{% endif %}>Élevés</option>
+                </select>
+            </label>
+            <button type="submit">Rechercher</button>
+        </form>
+    </aside>
     {% for plant in plants %}
-        <section class="list-item">
-        <h2>{{ plant.commonName }}</h2>
-        <h3>{{ plant.scientificName }}</h3>
-        <p>{{ plant.description|trans }}</p>
-        <img src="{{ asset('assets/img/uploads/plants/' ~ plant.image) }}" alt="{{ plant.scientificName }}" style="max-width: 200px; max-height: 200px;">
-            <div class="plant-guide">
-                <h3>Guide:</h3>
-                <ul class="plant-guide-list">
-                    <li>{{ 'cycle'|trans }}: {{ plant.cycle|trans  }}</li>
-                    <li>{{ 'hardiness_zone'|trans }}: {{ plant.hardinessZone|trans }}</li>
-                    <li>{{ 'maintenance_difficulty'|trans}}: {{ plant.maintenanceDifficulty|trans }}</li>
-                    <li>{{ 'watering_needs'|trans }}: {{ plant.wateringNeeds|trans }}</li>
-                    <li>{{ 'soil_type'|trans }}: {{ plant.soilType|trans }}</li>
-                    <li>{{ 'flowering_season'|trans }}: {{ plant.floweringSeason|trans }}</li>
-                </ul>
-            </div>
-        </section>
+        <a href="{{ path('user_app_plant_show', {'id': plant.id}) }}" class="plant-card-link" style="text-decoration:none;color:inherit;">
+            <section class="list-item plant-card">
+                <h2>{{ plant.commonName }}</h2>
+                <h3>{{ plant.scientificName }}</h3>
+                <p>{{ plant.description|trans }}</p>
+                <img src="{{ asset('assets/img/uploads/plants/' ~ plant.image) }}" alt="{{ plant.scientificName }}" style="max-width: 200px; max-height: 200px;">
+            </section>
+        </a>
     {% else %}
         <p>{{ 'no_plants_found'|trans }}</p>
     {% endfor %}

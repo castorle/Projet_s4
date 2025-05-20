@@ -1,0 +1,22 @@
+{# templates/default/plant_show.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ plant.commonName }}{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>{{ plant.commonName }}</h1>
+        <h2>{{ plant.scientificName }}</h2>
+        <img src="{{ asset('assets/img/uploads/plants/' ~ plant.image) }}" alt="{{ plant.scientificName }}" style="max-width: 300px; max-height: 300px;">
+        <p>{{ plant.description|trans }}</p>
+        <ul>
+            <li>{{ 'cycle'|trans }}: {{ plant.cycle|trans }}</li>
+            <li>{{ 'hardiness_zone'|trans }}: {{ plant.hardinessZone|trans }}</li>
+            <li>{{ 'maintenance_difficulty'|trans }}: {{ plant.maintenanceDifficulty|trans }}</li>
+            <li>{{ 'watering_needs'|trans }}: {{ plant.wateringNeeds|trans }}</li>
+            <li>{{ 'soil_type'|trans }}: {{ plant.soilType|trans }}</li>
+            <li>{{ 'flowering_season'|trans }}: {{ plant.floweringSeason|trans }}</li>
+        </ul>
+        <a href="{{ path('app_plants') }}">&#8592; Retour à la liste</a>
+    </div>
+{% endblock %}

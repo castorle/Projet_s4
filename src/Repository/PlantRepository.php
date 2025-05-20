@@ -40,4 +40,29 @@ class PlantRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function searchByCriteria(array $criteria)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->leftJoin('p.category', 'c');
+
+        if (!empty($criteria['category'])) {
+            $qb->andWhere('c.nom = :category')
+                ->setParameter('category', $criteria['category']);
+        }
+        if (!empty($criteria['maintenanceDifficulty'])) {
+            $qb->andWhere('p.maintenanceDifficulty = :md')
+                ->setParameter('md', $criteria['maintenanceDifficulty']);
+        }
+        if (!empty($criteria['soilType'])) {
+            $qb->andWhere('p.soilType = :soil')
+                ->setParameter('soil', $criteria['soilType']);
+        }
+        if (!empty($criteria['wateringNeeds'])) {
+            $qb->andWhere('p.wateringNeeds = :water')
+                ->setParameter('water', $criteria['wateringNeeds']);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
