@@ -6,8 +6,14 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import { createApp } from 'vue'
+import App from './vue/App.vue'
+import router from './router'
+import './styles/app.css'
 
-new Vue({
-    template: '<div>{{ hi }}</div>'
-})
+const el = document.getElementById('vue-app')
+const username = el.dataset.username
+
+createApp(App, { initialUsername: username })
+    .use(router)
+    .mount('#vue-app')
