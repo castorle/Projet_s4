@@ -83,4 +83,10 @@ final class DefaultController extends AbstractController{
             'user' => $user,
         ]);
     }
+
+    #[Route('/app/{vueRouting}', name: 'vue_app', requirements: ['vueRouting' => '.*'])]
+    public function vueApp(): Response
+    {
+        return $this->render('vue/app.html.twig');
+    }
 }

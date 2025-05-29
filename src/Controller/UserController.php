@@ -7,6 +7,7 @@ use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -19,6 +20,29 @@ final class UserController extends AbstractController{
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
+    }
+
+    #[Route('/api', name: 'api_user')]
+    public function userInfo(): JsonResponse
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return new JsonResponse(null, 401);
+        }
+
+        return $this->json($user, 200, [], ['groups' => 'user:read']);
+    }
+
+    #[Route('/api/maintenance-logs', name: 'api_user_maintenance_logs', methods: ['GET'])]
+    public function userMaintenanceLogs(\App\Repository\MaintenanceLogRepository $repo): JsonResponse
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return new JsonResponse(null, 401);
+        }
+
+        $logs = $repo->findBy(['user' => $user]);
+        return $this->json($logs, 200, [], ['groups' => 'maintenance_log:read']);
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]

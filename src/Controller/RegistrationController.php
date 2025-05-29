@@ -9,6 +9,7 @@ use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
@@ -53,8 +54,16 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_default');
         }
 
+        if ($request->query->get('iframe')) {
+            return $this->render('registration/register.html.twig', [
+                'registrationForm' => $form,
+                'iframe' => true,
+            ]);
+        }
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form,
+            'iframe' => false,
         ]);
     }
 
@@ -86,5 +95,33 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Your email address has been verified.');
 
         return $this->redirectToRoute('app_register');
+    }
+
+    // src/Controller/RegistrationController.php
+    #[Route('/api/register', name: 'api_register', methods: ['POST'])]
+    public function apiRegister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+
+        if (empty($data['email']) || empty($data['username']) || empty($data['plainPassword'])) {
+            return new JsonResponse(['error' => 'Champs manquants'], 400);
+        }
+
+        if ($entityManager->getRepository(User::class)->findOneBy(['email' => $data['email']])) {
+            return new JsonResponse(['error' => 'Email déjà utilisé'], 400);
+        }
+
+        $user = new User();
+        $user->setEmail($data['email']);
+        $user->setUsername($data['username']);
+        $user->setPassword($userPasswordHasher->hashPassword($user, $data['plainPassword']));
+        $user->setIsVerified(false);
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        // (optionnel) envoyer l’email de confirmation ici
+
+        return $this->json(['success' => true, 'username' => $user->getUsername()]);
     }
 }

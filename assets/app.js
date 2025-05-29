@@ -10,10 +10,11 @@ import { createApp } from 'vue'
 import App from './vue/App.vue'
 import router from './router'
 import './styles/app.css'
+import i18n from './vue/i18n'
 
 const el = document.getElementById('vue-app')
-const username = el.dataset.username
 
-createApp(App, { initialUsername: username })
+createApp(App)
     .use(router)
+    .use(i18n)
     .mount('#vue-app')

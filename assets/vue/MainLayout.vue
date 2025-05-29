@@ -1,7 +1,6 @@
-<!-- assets/vue/MainLayout.vue -->
 <template>
-  <div>
-    <Header :title="title" :menu="menu" />
+  <div id="app">
+    <Header :title="title" :user="user" />
     <main>
       <slot></slot>
     </main>
@@ -18,8 +17,13 @@ export default {
   components: { Header, Footer },
   props: {
     title: String,
-    menu: Array,
+    user: Object,
     universityYear: String
+  },
+  provide() {
+    return {
+      user: () => this.user
+    }
   }
 }
 </script>

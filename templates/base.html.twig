@@ -19,7 +19,6 @@
 
     </head>
     <body>
-    <div id="vue-app" data-username="{{ app.user ? app.user.username : '' }}"></div>
     <header>
         <h1>Jardin Enchanté</h1>
         <nav>
@@ -27,7 +26,7 @@
                 <li><a href="{{ path('app_default') }}">{{ 'home'|trans }}</a></li>
                 <li><a href="{{ path('app_plants') }}">{{ 'plants'|trans }}</a></li>
                 {% if app.user %}
-                <li><a href="{{ path('app_maintenance_logs') }}">{{ 'journal'|trans }}</a></li>
+                <li><a href="{{ path('app_maintenance_logs') }}">{{ 'maintenance_log'|trans }}</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('app_user_index') }}">{{ 'crud_user'|trans }}</a></li>

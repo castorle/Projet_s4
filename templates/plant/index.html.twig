@@ -32,7 +32,7 @@
                 <td>{{ plant.commonName }}</td>
                 <td>{{ plant.scientificName }}</td>
                 <td>{{ plant.description }}</td>
-                <td><img src="{{ asset('assets/img/uploads/plants/' ~ plant.image) }}" alt="{{ plant.commonName }}" /></td>
+                <td><img src="{{ asset(plant.image) }}" alt="{{ plant.commonName }}" /></td>
                 <td>{{ plant.cycle }}</td>
                 <td>{{ plant.hardinessZone }}</td>
                 <td>{{ plant.maintenanceDifficulty }}</td>

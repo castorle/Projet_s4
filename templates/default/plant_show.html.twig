@@ -7,7 +7,7 @@
     <div class="example-wrapper">
         <h1>{{ plant.commonName }}</h1>
         <h2>{{ plant.scientificName }}</h2>
-        <img src="{{ asset('assets/img/uploads/plants/' ~ plant.image) }}" alt="{{ plant.scientificName }}" style="max-width: 300px; max-height: 300px;">
+        <img src="{{ asset(plant.image) }}" alt="{{ plant.scientificName }}" style="max-width: 300px; max-height: 300px;">
         <p>{{ plant.description|trans }}</p>
         <ul>
             <li>{{ 'cycle'|trans }}: {{ plant.cycle|trans }}</li>

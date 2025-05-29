@@ -28,7 +28,7 @@ security:
                 enable_csrf: true
             logout:
                 path: user_logout
-                target: app_default
+                target: /app/
                 invalidate_session: true
             custom_authenticator: App\Security\AppAuthenticator
             entry_point: form_login # Définit form_login comme point d'entrée

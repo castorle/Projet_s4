@@ -1,29 +1,29 @@
 <template>
-  <MainLayout :title="pageTitle" :menu="navMenu" :universityYear="universityYear">
+  <MainLayout :title="pageTitle" :user="user" :universityYear="universityYear">
     <router-view />
   </MainLayout>
 </template>
 
 <script>
 import MainLayout from './MainLayout.vue'
-import PlantList from './PlantList.vue'
+import axios from 'axios'
 
 export default {
   name: 'App',
-  components: { MainLayout, PlantList },
+  components: { MainLayout },
   data() {
     return {
       pageTitle: 'Jardin Enchanté',
-      navMenu: [
-        { label: 'Accueil', url: '/' },
-        { label: 'Plantes', url: '/plants' }
-      ],
       universityYear: '2024-2025',
-      plantData: [
-        { id: 1, name: 'Rose', species: 'Rosa' },
-        { id: 2, name: 'Tulipe', species: 'Tulipa' }
-        // ... à remplacer par tes vraies données
-      ]
+      user: null
+    }
+  },
+  async created() {
+    try {
+      const res = await axios.get('/user/api')
+      this.user = res.data
+    } catch {
+      this.user = null
     }
   }
 }

@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PlantRepository::class)]
 #[Vich\Uploadable]
@@ -17,53 +18,68 @@ class Plant
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['plant:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?string $commonName = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?string $scientificName = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['plant:read'])]
     private ?string $image = null;
 
     #[Vich\UploadableField(mapping: 'plant_images', fileNameProperty: 'image')]
+    #[Groups(['plant:read'])]
     private ?File $imageFile = null;
 
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?string $cycle = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?int $hardinessZone = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?string $maintenanceDifficulty = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?string $wateringNeeds = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?string $soilType = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['plant:read'])]
     private ?string $floweringSeason = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups(['plant:read'])]
     private ?\DateTimeInterface $createdAt = null;
 
     /**
      * @var Collection<int, MaintenanceLog>
      */
     #[ORM\OneToMany(targetEntity: MaintenanceLog::class, mappedBy: 'plant', orphanRemoval: true)]
+    #[Groups(['plant:read'])]
     private Collection $maintenanceLogs;
 
     #[ORM\ManyToOne(inversedBy: 'plants')]
+    #[Groups(['plant:read'])]
     private ?Category $category = null;
 
     public function __construct()
