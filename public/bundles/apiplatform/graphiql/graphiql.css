@@ -2535,7 +2535,7 @@ button.graphiql-tab-add > svg {
   position: relative;
   flex: 1;
 }
-/* The footer below the response view */
+/* The Footer.vue below the response view */
 .graphiql-container .graphiql-footer {
   border-top: 1px solid
     hsla(var(--color-neutral), var(--alpha-background-heavy));

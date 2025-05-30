@@ -5,7 +5,7 @@
       <ul>
         <li><router-link to="/">{{ $t('home') }}</router-link></li>
         <li><router-link to="/plants">{{ $t('plants') }}</router-link></li>
-        <li v-if="user"><router-link to="/maintenance-logs">{{ $t('maintenance_log') }}</router-link></li>
+        <li v-if="user"><a href="/maintenance-logs">{{ $t('maintenance_log') }}</a></li>
         <li v-if="isAdmin"><a href="/user">{{ $t('crud_user') }}</a></li>
         <li v-if="isAdmin"><a href="/plant">{{ $t('crud_plant') }}</a></li>
         <li v-if="isAdmin"><a href="/category">{{ $t('crud_category') }}</a></li>

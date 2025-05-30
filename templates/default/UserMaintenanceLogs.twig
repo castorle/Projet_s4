@@ -19,7 +19,7 @@
                     <li>{{ 'date'|trans }}: {{ log.date|format_date('full')}}</li>
                     <li>{{ 'description'|trans }}: {{ log.description }}</li>
                 </ul>
-                <img src="{{ asset('assets/img/uploads/plants/' ~ log.plant.image) }}" alt="{{ log.plant.scientificName }}" style="max-width: 200px; max-height: 200px;">
+                <img src="{{ asset(log.plant.image) }}" alt="{{ log.plant.scientificName }}" style="max-width: 200px; max-height: 200px;">
             </div>
         </section>
     {% else %}

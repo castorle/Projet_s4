@@ -26,7 +26,7 @@ final class DefaultController extends AbstractController{
         ]);
     }
 
-    #[Route('/plants', name: 'app_plants')]
+    #[Route('/symfony/plants', name: 'app_plants')]
     public function plants(Request $request, PlantRepository $plantRepository): Response
     {
         $criteria = [

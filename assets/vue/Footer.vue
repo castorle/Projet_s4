@@ -1,7 +1,7 @@
 <!-- assets/vue/Footer.vue -->
 <template>
   <footer>
-    <p>{{ universityYear }}</p>
+    <p>{{ $t('university_year') }}</p>
     <slot></slot>
     <select v-model="$i18n.locale">
       <option value="fr">Français</option>

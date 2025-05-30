@@ -18,68 +18,68 @@ class Plant
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $commonName = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $scientificName = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $image = null;
 
     #[Vich\UploadableField(mapping: 'plant_images', fileNameProperty: 'image')]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?File $imageFile = null;
 
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $cycle = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?int $hardinessZone = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $maintenanceDifficulty = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $wateringNeeds = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $soilType = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?string $floweringSeason = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?\DateTimeInterface $createdAt = null;
 
     /**
      * @var Collection<int, MaintenanceLog>
      */
     #[ORM\OneToMany(targetEntity: MaintenanceLog::class, mappedBy: 'plant', orphanRemoval: true)]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private Collection $maintenanceLogs;
 
     #[ORM\ManyToOne(inversedBy: 'plants')]
-    #[Groups(['plant:read'])]
+    #[Groups(['plant:read', 'maintenance_log:read'])]
     private ?Category $category = null;
 
     public function __construct()

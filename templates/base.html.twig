@@ -24,9 +24,9 @@
         <nav>
             <ul>
                 <li><a href="{{ path('app_default') }}">{{ 'home'|trans }}</a></li>
-                <li><a href="{{ path('app_plants') }}">{{ 'plants'|trans }}</a></li>
+                <li><a href="{{ path('vue_app', { vueRouting: 'plants' }) }}">{{ 'plants'|trans }}</a></li>
                 {% if app.user %}
-                <li><a href="{{ path('app_maintenance_logs') }}">{{ 'maintenance_log'|trans }}</a></li>
+                <li><a href="/maintenance-logs">{{ 'maintenance_log'|trans }}</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('app_user_index') }}">{{ 'crud_user'|trans }}</a></li>
