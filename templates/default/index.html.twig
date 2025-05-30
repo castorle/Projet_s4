@@ -10,11 +10,11 @@
 
 <div class="example-wrapper">
     {% if app.user %}
-        <h1>Bonjour {{ app.user.username }}!</h1>
+        <h1>{{ 'Hello'|trans }} {{ app.user.username }}!</h1>
     {% else %}
-        <h1>Bonjour!</h1>
+        <h1>{{ 'Hello'|trans }}!</h1>
     {% endif %}
-    <p>Nous sommes le {{ "now"|format_date('full') }}</p>
+    <p>{{ "now"|format_date('full') }}</p>
     <h1 id="projet-plantes-">Projet Plantes 🌱</h1>
     <h2 id="description">Description</h2>
     <p>Une application web développée avec Symfony pour la gestion de plantes et leur entretien. Cette application permet aux utilisateurs de gérer leur collection de plantes, de suivre leur entretien et de se renseigner sur les plantes.</p>
