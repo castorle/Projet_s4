@@ -15,17 +15,17 @@
             <label>Catégorie :
                 <select name="category">
                     <option value="">Toutes</option>
-                    <option value="Plante verte" {% if app.request.get('category') == 'Plante verte' %}selected{% endif %}>Plante verte</option>
-                    <option value="Cactus" {% if app.request.get('category') == 'Cactus' %}selected{% endif %}>Cactus</option>
-                    <option value="Fleur" {% if app.request.get('category') == 'Fleur' %}selected{% endif %}>Fleur</option>
+                    <option value="Tree" {% if app.request.get('category') == 'Plante verte' %}selected{% endif %}>Tree</option>
+                    <option value="Flower" {% if app.request.get('category') == 'Cactus' %}selected{% endif %}>Flower</option>
+                    <option value="Cactus" {% if app.request.get('category') == 'Fleur' %}selected{% endif %}>Cactus</option>
                 </select>
             </label>
             <label>Difficulté d'entretien :
                 <select name="maintenanceDifficulty">
                     <option value="">Toutes</option>
-                    <option value="easy" {% if app.request.get('maintenanceDifficulty') == 'easy' %}selected{% endif %}>Facile</option>
-                    <option value="medium" {% if app.request.get('maintenanceDifficulty') == 'medium' %}selected{% endif %}>Moyenne</option>
-                    <option value="difficult" {% if app.request.get('maintenanceDifficulty') == 'difficult' %}selected{% endif %}>Difficile</option>
+                    <option value="Easy" {% if app.request.get('maintenanceDifficulty') == 'Easy' %}selected{% endif %}>Facile</option>
+                    <option value="Medium" {% if app.request.get('maintenanceDifficulty') == 'Medium' %}selected{% endif %}>Moyenne</option>
+                    <option value="Difficult" {% if app.request.get('maintenanceDifficulty') == 'Difficult' %}selected{% endif %}>Difficile</option>
                 </select>
             </label>
             <label>Type de sol :
@@ -40,9 +40,9 @@
             <label>Besoins en eau :
                 <select name="wateringNeeds">
                     <option value="">Tous</option>
-                    <option value="low" {% if app.request.get('wateringNeeds') == 'low' %}selected{% endif %}>Faibles</option>
-                    <option value="average" {% if app.request.get('wateringNeeds') == 'average' %}selected{% endif %}>Moyens</option>
-                    <option value="high" {% if app.request.get('wateringNeeds') == 'high' %}selected{% endif %}>Élevés</option>
+                    <option value="Low" {% if app.request.get('wateringNeeds') == 'Low' %}selected{% endif %}>Faibles</option>
+                    <option value="Average" {% if app.request.get('wateringNeeds') == 'Average' %}selected{% endif %}>Moyens</option>
+                    <option value="High" {% if app.request.get('wateringNeeds') == 'High' %}selected{% endif %}>Élevés</option>
                 </select>
             </label>
             <button type="submit">Rechercher</button>

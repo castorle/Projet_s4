@@ -1,88 +1,18 @@
 # PROJET PLANTES
 
-Application web de gestion de plantes et de leur entretien, développée avec Symfony (backend) et Vue.js (frontend SPA).
-
-## Objectifs pédagogiques
-
-
-- Utiliser un framework PHP (Symfony) pour la partie principale du site.
-- Utiliser un framework JS (Vue.js) pour une partie dynamique du site.
-- Respecter les bonnes pratiques d’éco-conception web (RGAA, RGESN).
-
-## Cahier des charges :
-### Symfony :
-- Au moins 4 entités avec relations justifiées.
-- Gestion de l’upload de fichiers (images de plantes).
-- Gestion de dates affichées en français (ex : lundi 24 mars 2025).
-- Mise en place d’une API pour Vue.js (ex : /api/plants).
-
-### Vue.js :
-- Utilisation de plusieurs composants.
-- Utilisation du routeur Vue Router.
-- Utilisation du store Pinia pour l’état global.
-- Consommation de l’API Symfony pour afficher dynamiquement des données.
-
-### Fonctionnalités
-- Gestion des utilisateurs (authentification, rôles, profils)
-- Gestion complète des plantes (CRUD, upload d’images)
-- Catégorisation des plantes
-- Journal d’entretien pour chaque plante (dates localisées)
-- Interface multilingue (fr, en, es, de, it)
-- Navigation hybride Symfony/Vue.js
-
-## Prérequis
-- PHP 8.2+
-- Composer
-- Symfony CLI
-- MySQL/MariaDB
-- Node.js & npm
-
-## Installation
-Cloner le dépôt : 
-```bash
-git clone https://github.com/castorle/Projet_s4.git cd Projet_s4
-```
-
-Installer les dépendances PHP : 
-```bash
-composer install
-```
-
-Configurer l’environnement : (fichier .env.local) 
-```bash
-DATABASE_URL="mysql://[USER]:[PASSWORD]@127.0.0.1:3306/[DATABASE_NAME]"
-```
-
-Installer les dépendances JS :
-```bash
-npm install
-```
-
-Compiler les assets :
-```bash
-npm run dev (ou pour la prod : npm run build)
-```
-
-Créer la base de données :
-```bash
-php bin/console doctrine:database:create php bin/console doctrine:migrations:migrate
-```
-
-Lancer le serveur :
-```bash
-symfony local:server:start
-```
-
-## Utilisation
-- Accéder à l’application : http://localhost:8000
-- Créer un compte utilisateur
-- Gérer vos plantes et leur entretien
+L’application « Jardin Enchanté » est une plateforme web de gestion de plantes et de leur entretien, développée avec Symfony (backend) et Vue.js (frontend SPA). Elle permet la gestion des utilisateurs, des plantes (CRUD, upload d’images), la catégorisation, un journal d’entretien, et propose une interface multilingue (fr, en, es, de, it).
 
 ## Structure du projet
 
-config/ - Configuration Symfony migrations/ - Migrations de base de données public/ - Fichiers publics (index.php, assets compilés) src/ - Code source PHP (contrôleurs, entités, services) templates/ - Templates Twig (Symfony) assets/ - Frontend Vue.js (SPA, composants, store, router) translations/ - Fichiers de traduction YAML
+- config/ - Configuration Symfony 
+- migrations/ - Migrations de base de données 
+- public/ - Fichiers publics (index.php, assets compilés) 
+- src/ - Code source PHP (contrôleurs, entités, services) 
+- templates/ - Templates Twig (Symfony) 
+- assets/ - Frontend Vue.js (SPA, composants, store, router) 
+- translations/ - Fichiers de traduction YAML
 
-## Entités principales
+## Entités
 
 #### PLANT
 - id (int)
@@ -115,18 +45,104 @@ config/ - Configuration Symfony migrations/ - Migrations de base de données pub
 - description (text)
 - plants (relation)
 
-## API Symfony
+## Outils et méthodologie utilisés
+- **Symfony** : Framework PHP pour le backend, avec API RESTful.
+- **Vue.js** : Framework JavaScript pour le frontend, avec Vue Router et Pinia.
+- **Twig** : Moteur de templates pour le rendu côté serveur.
+- **MySQL** : Base de données relationnelle pour stocker les données des plantes, utilisateurs, etc.
+- **Composer** : Gestionnaire de dépendances PHP.
+- **npm** : Gestionnaire de paquets JavaScript pour les dépendances frontend.
+- **Vite/Webpack** : Outil de build pour compiler et minifier les assets JS/CSS.
+- **Encore webpack** : Pour la gestion des assets Symfony.
 
-- Exemple d’endpoint : /api/plants (liste des plantes au format JSON)
-Utilisé par Vue.js pour afficher dynamiquement les données
-Frontend Vue.js
+## Extensions et bibliothèques utilisées
+- **Symfony Flex** : Pour simplifier la configuration et l’installation des bundles.
+  ```bash
+  composer require symfony/flex
+  ```
+- **Doctrine ORM** : Pour la gestion des entités et des migrations de base de données.
+  ```bash
+  composer require symfony/orm-pack
+  ```
+- **Twig Extensions** : Pour des fonctionnalités avancées dans les templates (filtrage, formatage).
+    ```bash
+    composer require symfony/twig-pack
+    ```
+- **symfony/translation** : Pour la gestion des traductions côté serveur.
+  ```bash
+  composer require symfony/translation
+  ```
+- **Vue Router** : Pour la navigation dans l’application Vue.js.
+  ```bash
+  npm install vue-router
+  ```
+- **Pinia** : Pour la gestion de l’état global dans Vue.js.
+    ```bash
+    npm install pinia
+    ```
+- **Axios** : Pour les requêtes HTTP vers l’API Symfony.
+  ```bash
+  npm install axios
+  ```
+- **i18n** : Pour la gestion de l’internationalisation (traductions) dans Vue.js.
+  ```bash
+  npm install vue-i18n
+  ```
 
 
-- Plusieurs composants (ex : Header, Footer, Home, PlantList, etc.)
-- Utilisation de Vue Router pour la navigation SPA
-- Utilisation de Pinia pour l’état global (utilisateur, année universitaire, etc.)
-- Consommation de l’API Symfony
-- Éco-conception du projet
+## Installation
+Cloner le dépôt : 
+```bash
+git clone https://github.com/castorle/Projet_s4.git cd Projet_s4
+```
+
+Installer les dépendances PHP : 
+```bash
+composer install
+```
+
+Configurer l’environnement : (fichier .env.local) 
+```bash
+DATABASE_URL="mysql://[USER]:[PASSWORD]@127.0.0.1:3306/[DATABASE_NAME]"
+```
+
+Installer les dépendances JS :
+```bash
+npm install
+```
+
+Compiler les assets :
+```bash
+npm run dev
+```
+
+ou pour la prod :
+```bash
+npm run build
+```
+
+Créer la base de données :
+```bash
+php bin/console doctrine:database:create php bin/console doctrine:migrations:migrate
+```
+
+Lancer le serveur :
+```bash
+symfony local:server:start
+```
+
+## Utilisation
+- Accéder à l’application : http://localhost:8000
+- Créer un compte utilisateur
+- Gérer vos plantes et leur entretien
+
+## Présentation des résultats obtenus
+### Fonctionnalités réalisées :
+- Gestion des utilisateurs (inscription, connexion, rôles)
+- Gestion des plantes (CRUD, upload d’images, affichage par carte)
+- Catégorisation des plantes
+- Journal d’entretien lié à chaque plante
+- Interface multilingue (fr, en, es, de, it)
 
 # Audit d’éco-conception du projet
 
